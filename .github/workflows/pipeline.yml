@@ -14,7 +14,7 @@ on:
 
 jobs:
   compile:
-    runs-on: ubuntu-latest
+    runs-on: githubproject
 
     steps:
     - uses: actions/checkout@v4
