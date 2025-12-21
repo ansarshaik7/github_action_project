@@ -15,7 +15,6 @@ on:
 jobs:
   compile:
     runs-on: githubproject
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -25,5 +24,16 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn compile
+
+  security-check:
+    runs-on: githubproject
+    needs: compile
+    steps:
+    - uses: actions/checkout@v4
+    - name: security checks with trivy for filesystem
+      run: trivy fs --format table --output results.json .
+    - name: security checks for code with gitleaks
+      run: gitleaks detect source . -r gitleaks-report.json -f json
+  
 
