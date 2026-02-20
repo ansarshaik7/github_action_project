@@ -121,7 +121,9 @@ jobs:
       run: |
         kubectl cluster-info
         kubectl get nodes
-  
+    - name: Pull image from DockerHub
+      run: |
+        docker pull ansarshaik/new_repo:latest
     - name: Load image into kind
       run: |
         kind load docker-image ansarshaik/new_repo:latest --name bankapp-cluster
