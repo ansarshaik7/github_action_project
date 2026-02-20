@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mybankapp
+  namespace: bankapp
+  labels:
+    app: mybankapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mybankapp
+  template:
+    metadata:
+      labels:
+        app: mybankapp
+    spec:
+      containers:
+      - name: mybankapp
+        image: ansarshaik/new_repo:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql-service:3306/bankappdb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+        - name: SPRING_DATASOURCE_USERNAME
+          value: root
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_ROOT_PASSWORD
