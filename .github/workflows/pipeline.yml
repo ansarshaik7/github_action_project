@@ -136,9 +136,9 @@ jobs:
     - name: Deploy manifests
       run: |
         kubectl apply -f namespace.yaml
-        kubectl apply -f secrets.yaml
         kubectl apply -f pvc.yaml
-        kubectl apply -f sql-deployment.yaml
-        kubectl apply -f sql-service.yaml
-        kubectl apply -f app-deployment.yaml
-        kubectl apply -f app-service.yaml
+        kubectl apply -f sql_secrets.yaml
+        kubectl apply -f sql_deployment.yaml
+        kubectl apply -f sql_service.yaml
+        kubectl apply -f app_deployment.yaml
+        kubectl apply -f app_service.yaml
