@@ -86,7 +86,7 @@ jobs:
   docker_build_push:
     name: Docker build and push
     runs-on: self-hosted
-    needs: test_results
+    needs: sonarbuildtest
     steps:
     - uses: actions/checkout@v4
     - name: Download JAR artifact
@@ -108,7 +108,9 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: true
-        tags: user/app:latest
+        tags: |
+          ansarshaik/new_repo:latest
+          ansarshaik/new_repo:${{ github.sha }}
   
   deploy_to_kubernetes:
     runs-on: self-hosted
