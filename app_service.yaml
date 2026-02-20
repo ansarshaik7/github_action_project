@@ -4,9 +4,10 @@ metadata:
   name: mybankapp-service
   namespace: bankapp
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: mybankapp
   ports:
   - port: 80
     targetPort: 8080
+
