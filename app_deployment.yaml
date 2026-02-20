@@ -6,7 +6,7 @@ metadata:
   labels:
     app: mybankapp
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: mybankapp
@@ -30,3 +30,4 @@ spec:
             secretKeyRef:
               name: mysql-secret
               key: MYSQL_ROOT_PASSWORD
+
