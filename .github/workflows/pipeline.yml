@@ -137,8 +137,8 @@ jobs:
       run: |
         kubectl delete namespace bankapp
         kubectl apply -f namespace.yaml
-        kubectl apply -f pvc.yaml
         kubectl apply -f sql_secrets.yaml
+        kubectl apply -f pvc.yaml
         kubectl apply -f sql_deployment.yaml
         kubectl apply -f sql_service.yaml
         kubectl apply -f app_deployment.yaml
