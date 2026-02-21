@@ -135,7 +135,7 @@ jobs:
 
     - name: Deploy manifests
       run: |
-        kubectl delete namespace bankapp
+        # kubectl delete namespace bankapp
         kubectl apply -f namespace.yaml
         kubectl apply -f sql_secrets.yaml
         kubectl apply -f pvc.yaml
