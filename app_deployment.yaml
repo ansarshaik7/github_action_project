@@ -30,4 +30,7 @@ spec:
             secretKeyRef:
               name: mysql-secret
               key: MYSQL_ROOT_PASSWORD
+        - name: SPRING_DATASOURCE_HIKARI_INITIALIZATION_FAIL_TIMEOUT
+          value: "60000"
+
 
